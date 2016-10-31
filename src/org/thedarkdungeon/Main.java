@@ -1,0 +1,108 @@
+/**
+ * 
+ */
+package org.thedarkdungeon;
+
+import java.util.Random;
+import java.util.Scanner;
+
+/**
+ * @author Stefano Peris
+ *
+ */
+public class Main {
+	public static void main(String[] args) {
+		
+		// System objects
+		Scanner in = new Scanner(System.in);
+		Random rand = new Random();
+		
+		// Game variables
+		String[] enemies = { "Warrior", "Skeleton", "Zombie", "Wraith" };
+		
+		int maxEnemyHealth = 75;
+		int enemyAttackDamage = 25;
+		
+		// Player variables
+		int health = 100;
+		int attackDamage = 50;
+		int numHealthPotions = 3;
+		int healthPotionHealAmount = 30;
+		int healthPotionDropChance = 50; // Percentage = 50%
+		
+		boolean running = true;
+		
+		System.out.println("THE DARK DUNGEON");
+		
+		GAME:
+		while(running) {
+			System.out.println("--------------------------------------------------");
+			
+			int enemyHealth = rand.nextInt(maxEnemyHealth);
+			String enemy = enemies[rand.nextInt(enemies.length)];
+			System.out.println("\t# " + enemy + " has appeared! #\n");
+			
+			while(enemyHealth > 0) {
+				System.out.println("\t Your HP: " + health);
+				System.out.println("\t" + enemy + "'s HP: " + enemyHealth);
+				System.out.println("\t\nWhat would you like to do?");
+				System.out.println("\t1. Attack");
+				System.out.println("\t2. Drink health potion");
+				System.out.println("\t3. Run!");
+				
+				String input = in.nextLine();
+				if(input.equals("1")) {
+					int damageDealt = rand.nextInt(attackDamage);
+					int damageTaken = rand.nextInt(enemyAttackDamage);
+					
+					enemyHealth -= damageDealt;
+					health -= damageTaken;
+					
+					System.out.println("\t> You strike the " + enemy + " for "
+					                      + damageDealt + " damage.");
+					
+					System.out.println("\t> You Receive " + damageTaken + " in retaliation!");
+					
+					if(health < 1) {
+						System.out.println("\t> You have taken too much damage, you are too weak to go on!");
+						break;
+						
+					}
+				}
+				else if(input.equals("2")) {
+					if(numHealthPotions > 0) {
+						health += healthPotionHealAmount;
+						numHealthPotions--;
+						
+						System.out.println("\t> You drink a health potion, healing yourself for "
+						                      + healthPotionHealAmount + "." + "\n\t> You now have "
+								              + health + " HP."
+								              + "\n\t> You have " + numHealthPotions
+								              + " health potions left.\n");
+					}
+					else {
+						System.out.println("\t> You have no health potions left! Defeat enemies for a chance to get one!\n");
+						
+					}
+				}
+				else if(input.equals("3")) {
+					System.out.println("\t> You run away from the " + enemy + "!");
+					continue GAME;
+				}
+				else {
+					System.out.println("\tInvalid Command :(");
+				}
+			}
+			if(health < 1) {
+				System.out.println("You limp out of the dungeon, weak from battle.");
+				break;
+			}
+			System.out.println("--------------------------------------------------");
+			System.out.println(" # " + enemy + " was defeated! #");
+			System.out.println(" # You have " + health + " HP left. #");
+			if(rand.nextInt(100) > healthPotionDropChance) {
+				
+			}
+		}
+	}
+}
