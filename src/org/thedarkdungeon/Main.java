@@ -43,7 +43,7 @@ public class Main {
 			System.out.println("\t# " + enemy + " has appeared! #\n");
 			
 			while(enemyHealth > 0) {
-				System.out.println("\t Your HP: " + health);
+				System.out.println("\tYour HP: " + health);
 				System.out.println("\t" + enemy + "'s HP: " + enemyHealth);
 				System.out.println("\t\nWhat would you like to do?");
 				System.out.println("\t1. Attack");
@@ -101,8 +101,32 @@ public class Main {
 			System.out.println(" # " + enemy + " was defeated! #");
 			System.out.println(" # You have " + health + " HP left. #");
 			if(rand.nextInt(100) > healthPotionDropChance) {
+				numHealthPotions++;
+				
+				System.out.println(" # The " + enemy + " dropped a health potion! # ");
+				System.out.println(" # You now have " + numHealthPotions + " health potion(s). # ");
+			}
+			System.out.println("--------------------------------------------------");
+			System.out.println("What would you to do now?");
+			System.out.println("1. Continue fighting");
+			System.out.println("2. Exit dungeon");
+			
+			String input = in.nextLine();
+			
+			while(!input.equals("1") && !input.equals("2")) {
+				input = in.nextLine();
+			}
+			if(input.equals("1")) {
+				System.out.println("You continue on your adventure!");
 				
 			}
+			else if(input.equals("2")) {
+				System.out.println("You exit the dungeon, successful from your adventures!\n");
+				break;
+			}
 		}
+		System.out.println("#######################");
+		System.out.println("# THANKS FOR PLAYING! #");
+		System.out.println("#######################");
 	}
 }
