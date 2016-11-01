@@ -1,5 +1,5 @@
 /*
-======================= THE DARK DUNGEON ============================
+======================== THE DARK DUNGEON ===========================
 
 description     :Text-based fantasy RPG game
 author          :Stefano Peris
