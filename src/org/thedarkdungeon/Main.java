@@ -1,6 +1,27 @@
-/**
- * 
- */
+/*
+======================= THE DARK DUNGEON ============================
+
+description     :Text-based fantasy RPG game
+author          :Stefano Peris
+email           :stefano.peris.dev@gmail.com
+github          :https://github.com/SpaghettiDeveloper
+date            :01/11/2016
+version         :0.4
+notes           :the program uses the standard Java libraries
+JDK_version     :1.8
+
+=====================================================================
+
+LICENSE:
+
+This software is granted with the license terms GPL 3.0.
+Read the license before you modify and distribute the source code.
+A copy of the license is included in the project.
+
+Visit the official website of the Free Software Foundation at: http://www.fsf.org/
+*/
+
+
 package org.thedarkdungeon;
 
 import java.util.Random;
